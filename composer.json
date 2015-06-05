@@ -1,0 +1,22 @@
+{
+	"name": "rwarasaurus/router",
+	"description": "Uri router library",
+	"type": "library",
+	"license": "GPL-3.0",
+	"authors": [
+		{
+			"name": "Kieron",
+			"email": "hello@madebykieron.co.uk",
+			"homepage": "http://madebykieron.co.uk",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"": "src/"
+		}
+	}
+}
