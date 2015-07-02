@@ -14,9 +14,15 @@
 	"require": {
 		"php": ">=5.5"
 	},
+	"require-dev": {
+		"phpspec/phpspec": "2.2.x"
+	},
 	"autoload": {
 		"psr-4": {
 			"": "src/"
 		}
+	},
+	"config": {
+		"bin-dir": "bin/"
 	}
 }
