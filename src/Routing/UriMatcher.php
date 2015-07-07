@@ -13,6 +13,14 @@ class UriMatcher {
 		$this->params = $params;
 	}
 
+	public function getRoutes() {
+		return $this->routes;
+	}
+
+	public function setRoutes(array $routes) {
+		$this->routes = $routes;
+	}
+
 	public function getParams() {
 		return $this->params;
 	}
