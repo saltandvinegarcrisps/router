@@ -35,4 +35,12 @@ class UriMatcherSpec extends ObjectBehavior {
 		$this->getParams()->shouldHaveKey('id');
 	}
 
+	public function it_should_match_pattern_and_set_optional_tokens() {
+		$this->beConstructedWith([
+			'/post(/:id/edit)?' => 'bar'
+		]);
+
+		$this->matchPattern('/post/172363/edit')->shouldBeEqualTo('bar');
+	}
+
 }

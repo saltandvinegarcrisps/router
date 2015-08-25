@@ -9,8 +9,8 @@ class UriMatcher {
 	protected $params;
 
 	public function __construct(array $routes = [], array $params = []) {
-		$this->routes = $routes;
-		$this->params = $params;
+		$this->setRoutes($routes);
+		$this->setParams($params);
 	}
 
 	public function getRoutes() {
