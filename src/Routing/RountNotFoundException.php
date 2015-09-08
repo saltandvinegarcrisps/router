@@ -2,4 +2,4 @@
 
 namespace Routing;
 
-class RountNotFoundException extends ErrorException {}
+class RountNotFoundException extends \ErrorException {}
