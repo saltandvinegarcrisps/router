@@ -41,6 +41,14 @@ class UriMatcher {
 		return $tokens;
 	}
 
+	public function resolveAliases($path) {
+		while(array_key_exists($path, $this->routes) && strpos($this->routes[$path], '/') === 0) {
+			$path = $this->routes[$path];
+		}
+
+		return $path;
+	}
+
 	public function matchString($path) {
 		if(array_key_exists($path, $this->routes)) {
 			return $this->routes[$path];
@@ -64,6 +72,8 @@ class UriMatcher {
 	}
 
 	public function match($path) {
+		$path = $this->resolveAliases($path);
+
 		if($route = $this->matchString($path)) {
 			return $route;
 		}
