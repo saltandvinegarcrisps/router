@@ -8,17 +8,9 @@ class UriMatcher {
 
 	protected $params;
 
-	public function __construct(array $routes = [], array $params = []) {
-		$this->setRoutes($routes);
+	public function __construct(CollectionInterface $routes = null, array $params = []) {
+		$this->routes = null === $routes ? new RouteCollection : $routes;
 		$this->setParams($params);
-	}
-
-	public function getRoutes() {
-		return $this->routes;
-	}
-
-	public function setRoutes(array $routes) {
-		$this->routes = $routes;
 	}
 
 	public function getParams() {
@@ -41,17 +33,17 @@ class UriMatcher {
 		return $tokens;
 	}
 
-	public function resolveAliases($path) {
-		while(array_key_exists($path, $this->routes) && strpos($this->routes[$path], '/') === 0) {
-			$path = $this->routes[$path];
+	protected function resolveAliases($path) {
+		while($this->routes->has($path) && strpos($this->routes->route($path), '/') === 0) {
+			$path = $this->routes->route($path);
 		}
 
 		return $path;
 	}
 
 	public function matchString($path) {
-		if(array_key_exists($path, $this->routes)) {
-			return $this->routes[$path];
+		if($this->routes->has($path)) {
+			return $this->routes->route($path);
 		}
 
 		return false;
