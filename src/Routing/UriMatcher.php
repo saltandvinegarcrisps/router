@@ -34,7 +34,7 @@ class UriMatcher {
 	}
 
 	protected function resolveAliases($path) {
-		while($this->routes->has($path) && strpos($this->routes->route($path), '/') === 0) {
+		while($this->routes->has($path) && is_string($this->routes->route($path)) && strpos($this->routes->route($path), '/') === 0) {
 			$path = $this->routes->route($path);
 		}
 
