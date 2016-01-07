@@ -11,8 +11,8 @@ class RouteCollection implements CollectionInterface {
 	}
 
 	public function getIterator() {
-        return new \ArrayIterator($this->routes);
-    }
+		return new \ArrayIterator($this->routes);
+	}
 
 	public function get() {
 		return $this->routes;

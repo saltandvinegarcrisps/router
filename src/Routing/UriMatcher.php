@@ -38,7 +38,7 @@ class UriMatcher {
 			return false;
 		}
 
-		$route = $this->routes->matchString($path);
+		$route = $this->routes->route($path);
 
 		if(false === is_string($route)) {
 			return false;
