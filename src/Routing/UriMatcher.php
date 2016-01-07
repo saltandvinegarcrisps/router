@@ -33,8 +33,22 @@ class UriMatcher {
 		return $tokens;
 	}
 
+	protected function testPath($path) {
+		if(false === $this->routes->has($path)) {
+			return false;
+		}
+
+		$route = $this->routes->matchString($path);
+
+		if(false === is_string($route)) {
+			return false;
+		}
+
+		return strpos($route, '/') === 0;
+	}
+
 	protected function resolveAliases($path) {
-		while($this->routes->has($path) && is_string($this->routes->route($path)) && strpos($this->routes->route($path), '/') === 0) {
+		while($this->testPath($path)) {
 			$path = $this->routes->route($path);
 		}
 
@@ -42,11 +56,7 @@ class UriMatcher {
 	}
 
 	public function matchString($path) {
-		if($this->routes->has($path)) {
-			return $this->routes->route($path);
-		}
-
-		return false;
+		return $this->routes->has($path) ? $this->routes->route($path) : false;
 	}
 
 	public function matchPattern($path) {
