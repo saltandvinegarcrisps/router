@@ -2,16 +2,16 @@
 
 namespace Routing;
 
-interface CollectionInterface extends \IteratorAggregate {
+interface CollectionInterface extends \IteratorAggregate
+{
 
-	public function get();
+    public function get();
 
-	public function set(array $routes);
+    public function set(array $routes);
 
-	public function merge(array $routes);
+    public function merge(array $routes);
 
-	public function has($path);
+    public function has($path);
 
-	public function route($path);
-
+    public function route($path);
 }
